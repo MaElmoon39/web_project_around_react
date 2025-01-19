@@ -5,7 +5,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: none;
+  /* display: none; */
   align-items: center;
   justify-content: center;
 }
@@ -23,7 +23,7 @@
   z-index: 10;
 }
 
-.popup__updt-avatar-img .form__edit-field:last-of-type {
+.popup__updt-avatar-img .popup__input:last-of-type {
   margin-top: 16px;
 }
 
@@ -64,7 +64,7 @@
   max-height: 75vh;
 }
 
-.form__edit-field {
+.popup__input {
   color: rgb(0 0 0 / 1);
   width: 100%;
   border: 0;
@@ -76,15 +76,15 @@
 
 /*Esta declaración permite que al memento de dar click en el box del input
 no aparezca el borde en toda la caja y se mantenga el texto en negro*/
-.form__edit-field:focus {
+.popup__input:focus {
   outline-style: none;
 }
 
-.form__edit-field::placeholder {
+.popup__input::placeholder {
   color: #c4c4c4;
 }
 
-.form__edit-field:last-of-type {
+.popup__input:last-of-type {
   margin-top: 28px;
 }
 
@@ -103,14 +103,14 @@ no aparezca el borde en toda la caja y se mantenga el texto en negro*/
   opacity: 80%;
 }
 
-.form__input-error {
+.popup__error {
   font-size: 12px;
   color: red;
   opacity: 0;
   transition: 0.3s;
 }
 
-.form__input-error_active {
+.popup__error_active {
   opacity: 1;
   display: block;
 }
