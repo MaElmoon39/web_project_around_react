@@ -5,16 +5,19 @@ export default function Popup(props) {
 
     return (
         <div className='popup'>
-            <div className='popup__content'>
-                <img
-                    src={closeIcon}
-                    alt='Close popup icon'
-                    className='popup__close-button'
-                    onClick={onClose}
-                />
-                <h3 className='popup__title'>{title}</h3>
-                {children}
-            </div>
+            <div
+                className={`popup popup_open-image ${
+                    !title ? "popup__img-container" : ""
+                  }`}
+            ></div>
+            <img
+                src={closeIcon}
+                alt='Close popup icon'
+                className='popup__close-button'
+                onClick={onClose}
+            />
+            {title && <h3 className='popup__title'>{title}</h3>}
+            {children}
         </div>
     )
 }

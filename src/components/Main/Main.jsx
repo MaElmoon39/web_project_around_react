@@ -3,10 +3,17 @@ import editIcon from '../../images/pencilEditButton.svg';
 import { useState } from 'react';
 import Popup from './components/Popup/Popup';
 import NewCard from './components/NewCard/NewCard';
-
+import EditProfile from './components/EditProfile/EditProfile';
+import EditAvatar from './components/Avatar/EditAvatar';
+import Card from './components/Card/Card';
+import { initialCards } from '../utils/constants';
+  
 export default function Main() {
     const [popup, setPopup] = useState(null);
-    const newCardPopup = {title: "Nuevo lugar", children: <NewCard />}
+    const newCardPopup = {title: 'Nuevo lugar', children: <NewCard />};
+    const editProfile = {title: 'Editar perfil', children: <EditProfile />};
+    const editAvatar = {title: 'Cambiar foto de perfil', children: <EditAvatar />};
+
 
     function handleOpenPopup(popup) {
         setPopup(popup);
@@ -21,7 +28,11 @@ export default function Main() {
             <section className='profile'>
                 <div className='profile__avatar'>
                     <img alt='Profile photo' className='profile__photo' src={logo}/>
-                    <button className='profile__edit-avatar'></button>
+                    <button
+                        className='profile__edit-avatar'
+                        alt='Pencil edit avatar'
+                        onClick={() => handleOpenPopup(editAvatar)}
+                    ></button>
                 </div>
 
                 <div className='profile__info'>
@@ -35,6 +46,7 @@ export default function Main() {
                             className='profile__info-edit-pencil'
                             src={editIcon}
                             alt='Pencil Edit Button'
+                            onClick={() => handleOpenPopup(editProfile)}
                         />
                     </button>
                 </div>
@@ -45,13 +57,17 @@ export default function Main() {
                 ></button>
             </section>
 
-            <section className='elements'></section>
+            <section className='elements'>
+                {initialCards.map((card) => (
+                    <Card key={card._id} card={card} />
+                ))}
+            </section>
 
             {/* renderizar Popup */}
             {popup && (
                 <Popup
-                    onClose={handleClosePopup}
                     title={popup.title}
+                    onClose={handleClosePopup}
                 >
                     {popup.children}
                 </Popup>
