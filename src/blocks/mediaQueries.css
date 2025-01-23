@@ -96,6 +96,10 @@
     padding: 25px 16px 0px 22px;
   }
 
+  .popup__with-form {
+    max-width: 238px;
+  }
+
   .popup__title {
     font-size: 18px;
     line-height: 22px;
@@ -103,16 +107,11 @@
   }
 
   .popup__close-button {
-    top: -25%;
-    right: 3%;
+    margin-left: 195px;
   }
 
   .popup__edit-btn-img {
     width: 26px;
-  }
-
-  .popup__formContainer {
-    max-width: 238px;
   }
 
   .form__edit-subm-btn {

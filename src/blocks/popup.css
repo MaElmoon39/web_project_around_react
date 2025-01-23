@@ -7,6 +7,7 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .popup_opened {
@@ -14,12 +15,15 @@
 }
 
 .popup__form {
-  width: 430px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
   position: relative;
   z-index: 10;
+}
+
+.popup__with-form {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 430px;
+  padding: 20px;
 }
 
 .popup__updt-avatar-img .form__edit-field:last-of-type {
@@ -42,11 +46,11 @@
 }
 
 .popup__close-button {
-  position: absolute;
+ 
   width: 40px;
   height: 40px;
-  top: -45px;
-  right: -45px;
+  margin-left: 470px;
+  margin-bottom: 10px;
 }
 
 .popup__close-button:hover {

@@ -1,7 +1,6 @@
-import ImagePopup from "../ImagePopup/ImagePopup";
-
 export default function Card(props) {
-    const {name, link, isLiked, handleOpenPopup} = props.card;
+    const {name, link, isLiked} = props.card;
+    const {handleOpenPopup} = props;
     
     return (
         <div id='elements__card-template'>
@@ -10,7 +9,7 @@ export default function Card(props) {
                     className='elements__picture-size'
                     src={link}
                     alt='image template'
-                    onClick={() => handleOpenPopup(ImagePopup)}
+                    onClick={() => handleOpenPopup(props.card)}
                 />
                 <button
                     className='elements__picture-trash-btn'
