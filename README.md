@@ -20,8 +20,9 @@ Validación e interactividad mantenida a partir de los cambios efectuados durant
 
 Demo aplicación en servidor Around The US de María Tortello:
 
-https://github.com/user-attachments/assets/c208d264-46ad-4da6-9040-17287a8df324
+https://github.com/user-attachments/assets/6e4a6a69-7036-4166-b5d2-14d6d913a759
 
 ## Enlace a GitHub Pages:
 
 Link: https://maelmoon39.github.io/web_project_around
+
