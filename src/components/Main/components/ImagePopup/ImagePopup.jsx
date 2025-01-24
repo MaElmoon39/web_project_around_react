@@ -1,11 +1,10 @@
-export default function ImagePopup(props) {
-    const {selectedCard} = props;
+export default function ImagePopup({selectedCard}) {
     return (<>
         <img
             className="popup__img-container popup__big-img"
             src={selectedCard.link} 
             alt={selectedCard.name}
         />
-        <p>{props.selectedCard.name}</p>
+        <p>{selectedCard.name}</p>
     </>);
 }
