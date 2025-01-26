@@ -1,13 +1,13 @@
-import logo from "../../images/profilePhoto.png";
 import editIcon from "../../images/pencilEditButton.svg";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Popup from "./components/Popup/Popup";
 import NewCard from "./components/NewCard/NewCard";
 import EditProfile from "./components/EditProfile/EditProfile";
 import ImagePopup from "./components/ImagePopup/ImagePopup";
 import EditAvatar from "./components/Avatar/EditAvatar";
 import Card from "./components/Card/Card";
-import { initialCards } from "../utils/constants";
+import { api } from "../../utils/api";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 export default function Main() {
   const [popup, setPopup] = useState(null);
@@ -17,8 +17,17 @@ export default function Main() {
     title: "Cambiar foto de perfil",
     children: <EditAvatar />,
   };
+
   const [selectedCard, setSelectedCard] = useState({});
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+  const [cards, setCards] = useState([]);
+  const { currentUser } = useContext(CurrentUserContext);
+  
+  useEffect(() => {
+    api.getInitialCards().then((cards) => {
+      setCards(cards);
+    });
+  },[]);
 
   function handleOpenPopup(popup) {
     setPopup(popup);
@@ -33,11 +42,19 @@ export default function Main() {
     setIsImagePopupOpen(true);
   }
 
+  async function handleCardLike(card) {
+    const isLiked = card.isLiked;
+    await api.likeCards(card._id, !isLiked).then((newCard) => {
+        setCards((state) => state.map(
+          (currentCard) => currentCard._id === card._id ? newCard : currentCard));
+      }).catch((error) => console.error(error));
+  }
+
   return (
     <main className="content">
       <section className="profile">
         <div className="profile__avatar">
-          <img alt="Profile photo" className="profile__photo" src={logo} />
+          <img alt="Profile photo" className="profile__photo" src={currentUser.avatar} />
           <button
             className="profile__edit-avatar"
             alt="Pencil edit avatar"
@@ -47,8 +64,8 @@ export default function Main() {
 
         <div className="profile__info">
           <div className="profile__info-text">
-            <h2 className="profile__info-name">Jacques Cousteau</h2>
-            <p className="profile__info-about">Explorador</p>
+            <h2 className="profile__info-name">{currentUser.name}</h2>
+            <p className="profile__info-about">{currentUser.about}</p>
           </div>
 
           <button className="profile__info-edit">
@@ -68,8 +85,13 @@ export default function Main() {
       </section>
 
       <section className="elements">
-        {initialCards.map((card) => (
-          <Card key={card._id} card={card} handleOpenPopup={handleCardClick} />
+        {cards.map((card) => (
+          <Card 
+            key={card._id}
+            card={card}
+            handleOpenPopup={handleCardClick}
+            onCardLike={handleCardLike}
+          />
         ))}
       </section>
 

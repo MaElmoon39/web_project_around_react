@@ -1,9 +1,9 @@
-import chinaImage from '../../images/Chinatown_ManhattanUSA.jpg';
-import ghostImage from '../../images/GhostbustersHeadquarters_NY_USA.jpg';
-import guatapeImage from '../../images/Guatape_AntioquiaCOL.jpg';
-import honkongImage from '../../images/HongKong_Streetnight.jpg';
-import wayuuImage from '../../images/MochilaWayu_CartagenaCOL.jpg';
-import suculentasImage from '../../images/suculentas.jpg';
+import chinaImage from '../images/Chinatown_ManhattanUSA.jpg';
+import ghostImage from '../images/GhostbustersHeadquarters_NY_USA.jpg';
+import guatapeImage from '../images/Guatape_AntioquiaCOL.jpg';
+import honkongImage from '../images/HongKong_Streetnight.jpg';
+import wayuuImage from '../images/MochilaWayu_CartagenaCOL.jpg';
+import suculentasImage from '../images/suculentas.jpg';
 
 export const initialCards = [
   {

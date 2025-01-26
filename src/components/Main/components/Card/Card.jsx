@@ -1,7 +1,15 @@
+import { useContext } from "react";
+import CurrentUserContext from "../../../../contexts/CurrentUserContext";
+
 export default function Card(props) {
+    const { currentUser } = useContext(CurrentUserContext);
+
     const {name, link, isLiked} = props.card;
     const {handleOpenPopup} = props;
-    
+    const cardLikeButtonClassName = `elements__like-btn ${
+        isLiked ? 'elements__like-click' : ''
+      }`;
+
     return (
         <div id='elements__card-template'>
             <div className='elements__picture'>
@@ -18,7 +26,7 @@ export default function Card(props) {
                 <div className='elements__picture-name-section'>
                     <h3 className='elements__picture-name'>{name}</h3>
                     <button
-                        className='elements__like-btn'
+                        className={cardLikeButtonClassName}
                         type='button'
                     ></button>
                 </div>
