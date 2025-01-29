@@ -1,4 +1,16 @@
-export default function EditAvatar() {
+
+import { useRef } from "react";
+
+export default function EditAvatar(props) {
+    const avatarRefs = useRef();
+    
+    function handleSubmit(e) {
+        e.preventDefault();
+        props.onUpdateAvatar({
+            avatar: avatarRefs,
+        });
+    }
+
     return (
         <>
             <form
@@ -6,6 +18,7 @@ export default function EditAvatar() {
                 name='popup__edit-avatar'
                 id='popup__edit-avatar'
                 noValidate
+                onSubmit={handleSubmit}
             >
                 <input
                     className='form__edit-field form__edit-field_image_link'
@@ -14,6 +27,7 @@ export default function EditAvatar() {
                     placeholder='https://somewebsite.com/someimage.jpg'
                     required
                     type='url'
+                    ref={avatarRefs}
                 />
                 <span className='form__input-error link-img-input-error'></span>
                 <button className='form__edit-subm-btn' type='submit'>Guardar</button>

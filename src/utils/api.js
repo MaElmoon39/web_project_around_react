@@ -40,13 +40,13 @@ class Api {
         });
     }
   
-    editUser(name, about) {
+    editUser(data) {
       return fetch(`${this.baseUrl}/users/me`, {
         method: "PATCH",
         headers: this.headers,
         body: JSON.stringify({
-          name,
-          about,
+          name: data.name,
+          about: data.about,
         }),
       })
         .then((res) => {
@@ -62,13 +62,13 @@ class Api {
         });
     }
   
-    createCard(name, link) {
+    createCard(data) {
       return fetch(`${this.baseUrl}/cards`, {
         method: "POST",
         headers: this.headers,
         body: JSON.stringify({
-          name,
-          link,
+          name: data.name,
+          link: data.link,
         }),
       })
         .then((res) => {
@@ -102,7 +102,7 @@ class Api {
         });
     }
   
-    likeCards(idCard) {
+    likeCards(idCard, isLiked) {
       return fetch(`${this.baseUrl}/cards/${idCard}/likes`, {
         method: "PUT",
         headers: this.headers,
