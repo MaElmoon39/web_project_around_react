@@ -70,7 +70,7 @@ function App() {
   return (
     <>
       <div className='page'>
-        <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar }}>
+        <CurrentUserContext.Provider value={{currentUser, handleUpdateUser }}>
           <Header />
           <Main
             onOpenPopup={handleOpenPopup}
@@ -79,6 +79,7 @@ function App() {
             cards={cards}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
+            onUpdateAvatar={handleUpdateAvatar}
           />
           <Footer />
         </CurrentUserContext.Provider>

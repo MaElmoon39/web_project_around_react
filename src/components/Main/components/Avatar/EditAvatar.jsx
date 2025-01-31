@@ -1,8 +1,11 @@
 
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import CurrentUserContext from "../../../../contexts/CurrentUserContext";
 
 export default function EditAvatar(props) {
-    const avatarRefs = useRef();
+    const userContext = useContext(CurrentUserContext);
+    const { currentUser } = userContext;
+    const avatarRefs = useRef(currentUser.avatar);
     
     function handleSubmit(e) {
         e.preventDefault();
@@ -10,6 +13,8 @@ export default function EditAvatar(props) {
             avatar: avatarRefs,
         });
     }
+
+    console.log(currentUser);
 
     return (
         <>
