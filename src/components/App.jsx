@@ -66,11 +66,20 @@ function App() {
           (currentCard) => currentCard._id === card._id ? newCard : currentCard));
       });
   }
+
+  const handleAddPlaceSubmit = (data) => {
+    (async () => {
+      await api.createCard(data).then((newCard) => {
+        setCards([newCard, ...cards]);
+        handleClosePopup();
+      });
+    })();
+  };
   
   return (
     <>
       <div className='page'>
-        <CurrentUserContext.Provider value={{currentUser, handleUpdateUser }}>
+        <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar }}>
           <Header />
           <Main
             onOpenPopup={handleOpenPopup}
@@ -79,7 +88,7 @@ function App() {
             cards={cards}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
-            onUpdateAvatar={handleUpdateAvatar}
+            onAddPlaceSubmit={handleAddPlaceSubmit}
           />
           <Footer />
         </CurrentUserContext.Provider>

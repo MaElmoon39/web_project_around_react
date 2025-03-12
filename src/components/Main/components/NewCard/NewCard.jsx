@@ -1,4 +1,26 @@
+import { useState, useContext } from "react";
+import CurrentUserContext from "../../../../contexts/CurrentUserContext";
+
 export default function NewCard() {
+  const userContext = useContext(CurrentUserContext);
+  const { currentUser, onAddPlaceSubmit } = userContext;
+
+  const [name, setName] = useState(currentUser.name);
+  const [link, setLink] = useState(currentUser.link);
+
+  const handleNewName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleNewLink = (e) => {
+  setLink(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddPlaceSubmit({ name, link });
+  };
+
   return (
     <>
       <form
@@ -6,6 +28,7 @@ export default function NewCard() {
         name="popup__card-form"
         id="popup__new-card"
         noValidate
+        onSubmit={handleSubmit}
       >
       
         <input
@@ -17,6 +40,7 @@ export default function NewCard() {
           placeholder="Título"
           required
           type="text"
+          onChange={handleNewName}
         />
         <span className="form__input-error title-input-error"></span>
 
@@ -27,6 +51,8 @@ export default function NewCard() {
           placeholder="Enlace a la imagen"
           required
           type="url"
+          value={link}
+          onChange={handleNewLink}
         />
         <span className="form__input-error link-img-input-error"></span>
 

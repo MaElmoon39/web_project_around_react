@@ -13,14 +13,13 @@ export default function EditProfile() {
     };
     
     const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
+        setDescription(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         handleUpdateUser({ name, about: description });
     };
-
 
     return (
         <>
