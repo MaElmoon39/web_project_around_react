@@ -102,7 +102,7 @@ class Api {
         });
     }
   
-    likeCards(idCard, isLiked) {
+    likeCards(idCard) {
       return fetch(`${this.baseUrl}/cards/${idCard}/likes`, {
         method: "PUT",
         headers: this.headers,

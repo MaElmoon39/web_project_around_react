@@ -53,33 +53,37 @@ function App() {
 
   async function handleCardLike(card) {
     const isLiked = card.isLiked;
-    await api.likeCards(card._id, !isLiked).then((newCard) => {
+    if(!isLiked){
+      await api.likeCards(card._id).then((newCard) => {
         setCards((state) => state.map(
           (currentCard) => currentCard._id === card._id ? newCard : currentCard));
       });
+    }else{
+      await api.deleteLikeCards(card._id).then((newCard) => {
+        setCards((state) => state.map(
+          (currentCard) => currentCard._id === card._id ? newCard : currentCard));
+      });
+    }
+    
   }
 
   async function handleCardDelete(card) {
-    const isLiked = card.isLiked;
-    await api.likeCards(card._id, !isLiked).then((newCard) => {
-        setCards((state) => state.map(
-          (currentCard) => currentCard._id === card._id ? newCard : currentCard));
-      });
+    api.deleteCards(card._id).then(() => {
+      setCards(cards.filter(c => c._id !== card._id));
+    })
   }
 
-  const handleAddPlaceSubmit = (data) => {
-    (async () => {
+  const handleAddPlaceSubmit = async (data) => {  
       await api.createCard(data).then((newCard) => {
         setCards([newCard, ...cards]);
         handleClosePopup();
-      });
-    })();
+      });    
   };
   
   return (
     <>
       <div className='page'>
-        <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar }}>
+        <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar, onAddPlaceSubmit:handleAddPlaceSubmit  }}>
           <Header />
           <Main
             onOpenPopup={handleOpenPopup}
@@ -88,7 +92,6 @@ function App() {
             cards={cards}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
-            onAddPlaceSubmit={handleAddPlaceSubmit}
           />
           <Footer />
         </CurrentUserContext.Provider>

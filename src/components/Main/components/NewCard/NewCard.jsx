@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import CurrentUserContext from "../../../../contexts/CurrentUserContext";
 
 export default function NewCard() {
@@ -7,6 +7,8 @@ export default function NewCard() {
 
   const [name, setName] = useState(currentUser.name);
   const [link, setLink] = useState(currentUser.link);
+
+  const formRef = useRef();
 
   const handleNewName = (e) => {
     setName(e.target.value);
@@ -21,9 +23,16 @@ export default function NewCard() {
     onAddPlaceSubmit({ name, link });
   };
 
+  /*
+  useEffect(() => {
+    const formValidator = new FormValidator(formRef.current)
+    formValidator.enableValidation();
+  }, [])
+*/
   return (
     <>
       <form
+        ref={formRef}
         className="popup__form form"
         name="popup__card-form"
         id="popup__new-card"

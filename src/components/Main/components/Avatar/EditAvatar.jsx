@@ -5,13 +5,13 @@ import CurrentUserContext from "../../../../contexts/CurrentUserContext";
 export default function EditAvatar() {
     const userContext = useContext(CurrentUserContext);
     const { currentUser } = userContext;
-    const avatarRefs = useRef(currentUser.avatar);
+    const avatarRefs = useRef();
 
     function handleSubmit(e) {
         e.preventDefault();
       
         userContext.handleUpdateAvatar({
-          avatar: avatarRefs,
+          avatar: avatarRefs.current.value,
         });
       }
 
@@ -31,6 +31,7 @@ export default function EditAvatar() {
                     placeholder='https://somewebsite.com/someimage.jpg'
                     required
                     type='url'
+                    defaultValue={currentUser.avatar}
                     ref={avatarRefs}
                 />
                 <span className='form__input-error link-img-input-error'></span>
