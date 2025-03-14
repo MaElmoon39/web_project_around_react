@@ -1,10 +1,10 @@
 import editIcon from "../../images/pencilEditButton.svg";
 import { useState, useContext } from "react";
 import Popup from "./components/Popup/Popup";
-import NewCard from "./components/NewCard/NewCard";
-import EditProfile from "./components/EditProfile/EditProfile";
-import ImagePopup from "./components/ImagePopup/ImagePopup";
-import EditAvatar from "./components/Avatar/EditAvatar";
+import NewCard from "./components/Popup/NewCard/NewCard";
+import EditProfile from "./components/Popup/EditProfile/EditProfile";
+import ImagePopup from "./components/Popup/ImagePopup/ImagePopup";
+import EditAvatar from "./components/Popup/Avatar/EditAvatar";
 import Card from "./components/Card/Card";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 

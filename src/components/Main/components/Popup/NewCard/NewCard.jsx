@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect, useRef } from "react";
-import CurrentUserContext from "../../../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../../../../contexts/CurrentUserContext";
 
 export default function NewCard() {
-  const userContext = useContext(CurrentUserContext);
+  let userContext = useContext(CurrentUserContext);
   const { currentUser, onAddPlaceSubmit } = userContext;
 
   const [name, setName] = useState(currentUser.name);
