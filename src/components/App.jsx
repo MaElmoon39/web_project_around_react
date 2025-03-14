@@ -83,7 +83,7 @@ function App() {
   return (
     <>
       <div className='page'>
-        <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar, onAddPlaceSubmit:handleAddPlaceSubmit  }}>
+        <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar, onAddPlaceSubmit:handleAddPlaceSubmit }}>
           <Header />
           <Main
             onOpenPopup={handleOpenPopup}

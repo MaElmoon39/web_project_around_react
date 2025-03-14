@@ -4,8 +4,9 @@ import CurrentUserContext from "../../../../contexts/CurrentUserContext";
 export default function Card(props) {
     const { currentUser } = useContext(CurrentUserContext);
 
-    const {name, link, isLiked} = props.card;
-    const {handleOpenPopup, handleDeleteCard} = props;
+    const {name, link, isLiked, _id} = props.card;
+    const {handleOpenPopup, onCardDelete} = props;
+    //const {handleOpenPopup} = props;
     const cardLikeButtonClassName = `elements__like-btn ${
         isLiked ? 'elements__like-click' : ''
       }`;
@@ -21,7 +22,7 @@ export default function Card(props) {
                 />
                 <button
                     className='elements__picture-trash-btn'
-                    onClick={() => {props.handleDeleteCard(props.card)}}
+                    onClick={() => onCardDelete(props.card)}
                     type='button'
                 ></button>
                 <div className='elements__picture-name-section'>
