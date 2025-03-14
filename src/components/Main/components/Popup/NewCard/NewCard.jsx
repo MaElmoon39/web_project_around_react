@@ -2,7 +2,7 @@ import { useState, useContext, useEffect, useRef } from "react";
 import CurrentUserContext from "../../../../../contexts/CurrentUserContext";
 
 export default function NewCard() {
-  let userContext = useContext(CurrentUserContext);
+  const userContext = useContext(CurrentUserContext);
   const { currentUser, onAddPlaceSubmit } = userContext;
 
   const [name, setName] = useState(currentUser.name);
@@ -60,7 +60,7 @@ export default function NewCard() {
           placeholder="Enlace a la imagen"
           required
           type="url"
-          value={link}
+          defaultValue={link}
           onChange={handleNewLink}
         />
         <span className="form__input-error link-img-input-error"></span>
