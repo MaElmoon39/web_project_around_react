@@ -6,7 +6,6 @@ export default function Card(props) {
 
     const {name, link, isLiked, _id} = props.card;
     const {handleOpenPopup, onCardDelete} = props;
-    //const {handleOpenPopup} = props;
     const cardLikeButtonClassName = `elements__like-btn ${
         isLiked ? 'elements__like-click' : ''
       }`;

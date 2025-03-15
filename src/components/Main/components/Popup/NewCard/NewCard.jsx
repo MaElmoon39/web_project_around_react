@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useRef } from "react";
 import CurrentUserContext from "../../../../../contexts/CurrentUserContext";
 
 export default function NewCard() {
@@ -22,13 +22,7 @@ export default function NewCard() {
     e.preventDefault();
     onAddPlaceSubmit({ name, link });
   };
-
-  /*
-  useEffect(() => {
-    const formValidator = new FormValidator(formRef.current)
-    formValidator.enableValidation();
-  }, [])
-*/
+ 
   return (
     <>
       <form
