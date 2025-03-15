@@ -15,14 +15,12 @@ La base del proyecto se enfoca en transferir el proyecto de "Alrededor de los EE
 
 Validación e interactividad mantenida a partir de los cambios efectuados durante el desarrollo del proyecto del Sprint 14:
 
-![image](https://github.com/user-attachments/assets/0e764253-c29a-4add-bccf-100eb441d005)
-
+![image](https://github.com/user-attachments/assets/edd2b903-f9f1-4a31-81f2-47cf3b105242)
 
 Demo aplicación en servidor Around The US de María Tortello:
 
-https://github.com/user-attachments/assets/6e4a6a69-7036-4166-b5d2-14d6d913a759
+https://github.com/user-attachments/assets/1e569dba-8cf3-4ac6-bd2d-4165107a320c
 
 ## Enlace a GitHub Pages:
 
 Link: https://maelmoon39.github.io/web_project_around
-
